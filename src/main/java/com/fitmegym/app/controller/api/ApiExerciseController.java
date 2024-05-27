@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fitmegym.app.entity.Exercise;
@@ -21,14 +22,15 @@ public class ApiExerciseController {
 	@Autowired
 	private ExerciseService exerciseService;
 
-	@PostMapping
-	public Exercise addExercise(@RequestBody Exercise exercise) {
-		return exerciseService.addExercise(exercise);
-	}
-
 	@GetMapping
 	public List<Exercise> listExercises() {
 		return exerciseService.listExercises();
+	}
+
+	@PostMapping
+	public Exercise addExercise(@RequestBody Exercise exercise, @RequestParam Long workoutId,
+			@RequestParam Long categoryId) {
+		return exerciseService.addExercise(exercise, workoutId, categoryId);
 	}
 
 	@DeleteMapping("/{id}")

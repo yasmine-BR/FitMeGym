@@ -11,6 +11,12 @@
         <input type="text" name="name" placeholder="Exercise Name" required>
         <textarea name="description" placeholder="Exercise Description" required></textarea>
         <input type="number" name="duration" placeholder="Duration (minutes)" required>
+        <select name="workoutId" required>
+            <option th:each="workout : ${workouts}" th:value="${workout.id}" th:text="${workout.name}"></option>
+        </select>
+        <select name="categoryId" required>
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+        </select>
         <button type="submit">Add Exercise</button>
     </form>
     <h2>List of Exercises</h2>
@@ -19,6 +25,8 @@
             <p th:text="${exercise.name}"></p>
             <p th:text="${exercise.description}"></p>
             <p th:text="${exercise.duration} + ' minutes'"></p>
+            <p th:text="'Workout: ' + ${exercise.workout.name}"></p>
+            <p th:text="'Category: ' + ${exercise.category.name}"></p>
             <form th:action="@{/exercises/delete/{id}(id=${exercise.id})}" method="post">
                 <input type="hidden" name="_method" value="delete">
                 <button type="submit">Delete</button>
