@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Category</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>Edit Category</h1>
+    <th:block th:include="fragments/navigation :: nav"></th:block>
+    <form th:action="@{/categories/update/{id}(id=${category.id})}" method="post">
+        <input type="text" name="name" th:value="${category.name}" placeholder="Category Name" required>
+        <textarea name="description" th:text="${category.description}" placeholder="Category Description" required></textarea>
+        <button type="submit">Update Category</button>
+    </form>
+</body>
+</html>

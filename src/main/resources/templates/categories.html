@@ -17,6 +17,7 @@
         <li th:each="category : ${categories}">
             <p th:text="${category.name}"></p>
             <p th:text="${category.description}"></p>
+            <a th:href="@{/categories/edit/{id}(id=${category.id})}">Edit</a>
             <form th:action="@{/categories/delete/{id}(id=${category.id})}" method="post">
                 <input type="hidden" name="_method" value="delete">
                 <button type="submit">Delete</button>

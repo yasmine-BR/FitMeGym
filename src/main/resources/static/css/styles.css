@@ -27,7 +27,6 @@ nav ul {
 }
 
 nav ul li {
-    display: inline;
     padding: 14px 20px;
 }
 
@@ -105,4 +104,17 @@ ul li button {
 
 ul li button:hover {
     background-color: #d32f2f;
+}
+
+ul li a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    background-color: #45a049;
 }

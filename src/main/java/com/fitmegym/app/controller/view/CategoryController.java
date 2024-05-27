@@ -28,9 +28,23 @@ public class CategoryController {
 		return "categories";
 	}
 
+	@GetMapping("/edit/{id}")
+	public String editCategory(@PathVariable Long id, Model model) {
+		Category category = categoryService.getCategoryById(id);
+		model.addAttribute("category", category);
+		return "edit_category";
+	}
+
 	@PostMapping
 	public String addCategory(@ModelAttribute Category category) {
 		categoryService.addCategory(category);
+		return "redirect:/categories";
+	}
+
+	@PostMapping("/update/{id}")
+	public String updateCategory(@PathVariable Long id, @ModelAttribute Category category) {
+		category.setId(id);
+		categoryService.updateCategory(category);
 		return "redirect:/categories";
 	}
 
