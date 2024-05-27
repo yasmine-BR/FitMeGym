@@ -18,6 +18,7 @@
         <li th:each="user : ${users}">
             <p th:text="${user.username}"></p>
             <p th:text="${user.email}"></p>
+            <a th:href="@{/users/edit/{id}(id=${user.id})}">Edit</a>
             <form th:action="@{/users/delete/{id}(id=${user.id})}" method="post">
                 <input type="hidden" name="_method" value="delete">
                 <button type="submit">Delete</button>

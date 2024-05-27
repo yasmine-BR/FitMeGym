@@ -28,9 +28,23 @@ public class UserController {
 		return "users";
 	}
 
+	@GetMapping("/edit/{id}")
+	public String editUser(@PathVariable Long id, Model model) {
+		User user = userService.getUserById(id);
+		model.addAttribute("user", user);
+		return "edit_user";
+	}
+
 	@PostMapping
 	public String addUser(@ModelAttribute User user) {
 		userService.addUser(user);
+		return "redirect:/users";
+	}
+
+	@PostMapping("/update/{id}")
+	public String updateUser(@PathVariable Long id, @ModelAttribute User user) {
+		user.setId(id);
+		userService.updateUser(user);
 		return "redirect:/users";
 	}
 
