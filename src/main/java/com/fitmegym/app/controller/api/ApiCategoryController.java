@@ -1,4 +1,4 @@
-package com.fitmegym.app.controller;
+package com.fitmegym.app.controller.api;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import com.fitmegym.app.service.CategoryService;
 
 @RestController
 @RequestMapping("/api/categories")
-public class CategoryController {
+public class ApiCategoryController {
 
 	@Autowired
 	private CategoryService categoryService;

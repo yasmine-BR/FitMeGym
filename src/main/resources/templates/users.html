@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>Users</h1>
+    <th:block th:include="fragments/navigation :: nav"></th:block>
+    <form th:action="@{/users}" method="post">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <button type="submit">Add User</button>
+    </form>
+    <h2>List of Users</h2>
+    <ul>
+        <li th:each="user : ${users}">
+            <p th:text="${user.username}"></p>
+            <p th:text="${user.email}"></p>
+            <form th:action="@{/users/delete/{id}(id=${user.id})}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>

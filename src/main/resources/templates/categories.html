@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Categories</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>Categories</h1>
+    <th:block th:include="fragments/navigation :: nav"></th:block>
+    <form th:action="@{/categories}" method="post">
+        <input type="text" name="name" placeholder="Category Name" required>
+        <textarea name="description" placeholder="Category Description" required></textarea>
+        <button type="submit">Add Category</button>
+    </form>
+    <h2>List of Categories</h2>
+    <ul>
+        <li th:each="category : ${categories}">
+            <p th:text="${category.name}"></p>
+            <p th:text="${category.description}"></p>
+            <form th:action="@{/categories/delete/{id}(id=${category.id})}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>

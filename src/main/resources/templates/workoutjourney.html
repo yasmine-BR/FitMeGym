@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Workout Journey</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>Workout Journey</h1>
+    <th:block th:include="fragments/navigation :: nav"></th:block>
+    <form th:action="@{/workoutjourney}" method="post">
+        <select name="workoutId" required>
+            <option th:each="workout : ${workouts}" th:value="${workout.id}" th:text="${workout.name}"></option>
+        </select>
+        <input type="date" name="date" required>
+        <button type="submit">Add to Journey</button>
+    </form>
+    <h2>Workout Journey Entries</h2>
+    <ul>
+        <li th:each="entry : ${workoutjourney}">
+            <p th:text="${entry.workout.name}"></p>
+            <p th:text="${entry.date}"></p>
+            <form th:action="@{/workoutjourney/delete/{id}(id=${entry.id})}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>

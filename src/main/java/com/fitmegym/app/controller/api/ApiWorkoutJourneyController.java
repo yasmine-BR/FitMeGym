@@ -1,4 +1,4 @@
-package com.fitmegym.app.controller;
+package com.fitmegym.app.controller.api;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import com.fitmegym.app.service.WorkoutJourneyService;
 
 @RestController
 @RequestMapping("/api/myworkoutjourney")
-public class WorkoutJourneyController {
+public class ApiWorkoutJourneyController {
 
 	@Autowired
 	private WorkoutJourneyService workoutJourneyService;

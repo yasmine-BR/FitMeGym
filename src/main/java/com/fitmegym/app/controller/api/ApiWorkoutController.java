@@ -1,4 +1,4 @@
-package com.fitmegym.app.controller;
+package com.fitmegym.app.controller.api;
 
 import java.util.List;
 
@@ -11,28 +11,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fitmegym.app.entity.User;
-import com.fitmegym.app.service.UserService;
+import com.fitmegym.app.entity.Workout;
+import com.fitmegym.app.service.WorkoutService;
 
 @RestController
-@RequestMapping("/api/users")
-public class UserController {
+@RequestMapping("/api/workouts")
+public class ApiWorkoutController {
 
 	@Autowired
-	private UserService userService;
+	private WorkoutService workoutService;
 
 	@PostMapping
-	public User addUser(@RequestBody User user) {
-		return userService.addUser(user);
+	public Workout addWorkout(@RequestBody Workout workout) {
+		return workoutService.addWorkout(workout);
 	}
 
 	@GetMapping
-	public List<User> listUsers() {
-		return userService.listUsers();
+	public List<Workout> listWorkouts() {
+		return workoutService.listWorkouts();
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteUser(@PathVariable Long id) {
-		userService.deleteUser(id);
+	public void deleteWorkout(@PathVariable Long id) {
+		workoutService.deleteWorkout(id);
 	}
 }

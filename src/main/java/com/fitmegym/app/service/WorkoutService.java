@@ -26,4 +26,7 @@ public class WorkoutService {
 		workoutRepository.deleteById(id);
 	}
 
+	public Workout findWorkoutById(Long id) {
+		return workoutRepository.findById(id).orElse(null);
+	}
 }
